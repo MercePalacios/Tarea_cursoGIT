@@ -13,3 +13,16 @@ library(car)
 
 data <- read.table("clipboard", header=TRUE, sep="\t", na.strings="NA", dec=",", strip.white=TRUE)
 
+
+
+
+
+
+
+
+
+# adjust and run a model
+
+model1 <- glm(número.de.individuos ~ mes, family = poisson, data)
+
+anova(model1)
