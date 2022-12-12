@@ -13,3 +13,7 @@ library(car)
 
 data <- read.table("clipboard", header=TRUE, sep="\t", na.strings="NA", dec=",", strip.white=TRUE)
 
+
+# analisis 
+
+ggplot(data = data) + geom_histogram(aes(x=mes))
