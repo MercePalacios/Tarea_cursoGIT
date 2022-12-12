@@ -11,20 +11,19 @@ OBJETIVOS
 
 Conocer la abundancia de la curruca cabecinegra a lo largo de 10 años en distintos hábitats de la ciudad de Portugalete.
 
-MÉTODOS
+MÉTODOS Y RESULTADOS
 
 Hemos creado un modelo lineal sencillo siguiendo el código descrito a continuación y hemos testado nuestras hipótesis con un análsis de varianza secuencial (ANOVA).
 
 ```{r}
 
+library(ggplot2)
 data <- read.table("clipboard", header=TRUE, sep="\t", na.strings="NA", dec=",", strip.white=TRUE)
 
 lm <- lm(abundance ~ year*habitat, data)
 
 anova(lm)
 ```
-
-RESULTADOS
 
 Concluimos que hubo cambios significativos de un año a otro siendo la tendencia negativa. Esto se traduce en un declive poblacional de la curruca cabecinegra en las localidaddes muestreadas. Además, esta reducción de la abundancia de individuos fue significativamente mayor en las zonas que pertenecían a parques urbanos.
 
@@ -34,10 +33,4 @@ ggplot(data, aes (x = year, y = abundance, colour = habitat)) +
              geom_smooth(method = "lm", aes(fill = habitat)) +               
              theme_bw() + scale_fill_manual(values = c("#EE7600", "#00868B")) + scale_colour_manual(values = c("#EE7600", "#00868B"))         
    
-```
-
-```{r, echo=FALSE}
-
-anova(lm)
-
 ```
