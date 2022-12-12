@@ -1,0 +1,22 @@
+---
+title: "Manuscript"
+author: "Mercè Palacios & Itziar Jericó"
+format: html
+editor: visual
+---
+
+## Dinámica poblacional de la curruca cabecinegra en Portugalete
+
+OBJETIVOS
+
+Conocer la dinámica poblacional de la curruca cabecinegra a lo largo de un año en Portugalete.
+
+RESULTADOS
+
+Hemos creado un modelo lineal generalizado siguiendo el código de abajo y hemos analizado los datos colectados.
+
+`{r}model1 \<- glm(número.de.individuos \~ mes, family = poisson, data)`
+
+Concluimos que hay cambios significativos de un mes a otro siendo la curruca más abundante en los de primavera.
+
+`{r}ggplot(data = data) + geom_histogram(aes(x=mes))`
