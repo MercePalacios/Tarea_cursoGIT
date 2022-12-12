@@ -17,3 +17,11 @@ data <- read.table("clipboard", header=TRUE, sep="\t", na.strings="NA", dec=",",
 # analisis 
 
 ggplot(data = data) + geom_histogram(aes(x=mes))
+
+
+
+# adjust and run a model
+
+model1 <- glm(número.de.individuos ~ mes, family = poisson, data)
+
+anova(model1)
