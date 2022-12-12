@@ -16,11 +16,13 @@ data <- read.table("clipboard", header=TRUE, sep="\t", na.strings="NA", dec=",",
 
 # analisis 
 
-ggplot(data = data) + geom_histogram(aes(x=mes))
-
+ggplot(data, aes (x = year, y = abundance, colour = habitat)) +
+             geom_smooth(method = "lm", aes(fill = habitat)) +               
+             theme_bw() + scale_fill_manual(values = c("#EE7600", "#00868B")) + scale_colour_manual(values = c("#EE7600", "#00868B"))         
+   
 
 # adjust and run a model
 
-model1 <- glm(número.de.individuos ~ mes, family = poisson, data)
+lm <- lm(abundance ~ year*habitat, data)
 
-anova(model1)
+anova(lm)
